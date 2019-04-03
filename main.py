@@ -123,7 +123,7 @@ def unmerge(img):
 
 
 def merger(img1, img2, output):
-    merged_image = merge(Image.open(img1), Image.open(img2))
+    merged_image = merge(img1, img2)
     merged_image.save(output)
 
 
@@ -133,10 +133,15 @@ def unmerger(img, output):
 
 inp = int(input("Select option: \n\t0 --> Encrypt\n\t1 --> Decrypt\n"))
 if(inp == 0):
-    img1 = input("Image to be shown : ")
-    img2 = input("Image to be hidden : ")
-    merger(img1,img2,'output.png')
-    print("Encrypted successfully ! -->  output.png")
+    img1_name = input("Image to be shown : ")
+    img2_name = input("Image to be hidden : ")
+    img_1 = Image.open(img1_name)
+    img_2 = Image.open(img2_name)
+    if(img_2.size<img_1.size):
+        merger(img_1,img_2,'output.png')
+        print("Encrypted successfully ! -->  output.png")
+    else:
+        print("First image should be larger!")
 elif(inp == 1):
     img3 = input("Image to be decrypted : ")
     unmerger(img3,'extracted.png')
