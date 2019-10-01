@@ -1,4 +1,7 @@
+#import libraries
 from PIL import Image
+
+
 
 
 def int_to_bin(rgb):
